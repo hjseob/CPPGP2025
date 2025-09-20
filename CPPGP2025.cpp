@@ -10,9 +10,9 @@ int main()
     std::cout << v1 << std::endl;
 
     ZVector3 v2(-1, 1, 1);
-    std::cout << v2.cross(v1) << std::endl;
+    std::cout << v2.cross(v1).normalized() << std::endl;
 
-	std::cout << v1.dot(v2) << std::endl;
+	std::cout << v1.normalized().dot(v2.normalized()) << std::endl;
 
 
 
