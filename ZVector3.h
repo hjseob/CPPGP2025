@@ -2,21 +2,36 @@
 
 #include <iostream>
 
+class ZMatrix;
+
 class ZVector3 {
 public:
 	double x, y, z;
 
-	ZVector3(double x = 0.0, double y = 0.0, double z = 0.0)
-		: x(x), y(y), z(z) {}
+	// 생성자
+	ZVector3();
+	ZVector3(double x = 0.0, double y = 0.0, double z = 0.0);
+	ZVector3(const ZVector3& other);
+	~ZVector3();
 
-	// 복사 생성자
-	// copy constructor
-	
-	ZVector3(const ZVector3& other)
-		: x(other.x), y(other.y), z(other.z) {}
-	
+	// 멤버 함수
+	double Dot(const ZVector3& rhs) const;
+	ZVector3 Cross(const ZVector3& rhs) const;
 
-	// const r value reference?
+	ZVector3 Scale(double k) const;
+	double Length() const;
+
+	double radBetween(const ZVector3& a, const ZVector3& b) const;
+	double degBetween(const ZVector3& a, const ZVector3& b) const;
+	ZVector3 Normalize() const;
+	ZVector3 Transform(const ZMatrix& matrix) const;
+
+	// 정적(static) 함수
+	static double Dot(const ZVector3& u, const ZVector3& v); // 내적 (정적 멤버 함수)
+	static ZVector3 Cross(const ZVector3& u, const ZVector3& v); // 외적 ( 정적 멤버 함수)
+
+
+		/// const r value reference?
 	// 
 	// 
 	// 팩토리 패턴
@@ -24,50 +39,15 @@ public:
 
 
 	// 연산자 오버로드
-	ZVector3 operator+(const ZVector3& other) const {
-		return ZVector3(x + other.x, y + other.y, z + other.z);
-	}
-	
-	ZVector3 operator-(const ZVector3& other) const {
-		return ZVector3(x - other.x, y - other.y, z - other.z);
-	}
-
-	// 메서드
-
-
-	double dot(const ZVector3& other) const {
-		return x * other.x + y * other.y + z * other.z;
-	}
-
-	ZVector3 cross(const ZVector3& other) const {
-		return ZVector3(
-			y * other.z - z * other.y,
-			z * other.x - x * other.z,
-			x * other.y - y * other.x
-		);
-	}
-
-	ZVector3 normalized() const {
-		double length = std::sqrt(x * x + y * y + z * z);
-		if (length == 0) return ZVector3(0, 0, 0);
-		return ZVector3(x / length, y / length, z / length);
-	}
-
-	// d3d에도 math가 있다!  아무거나 사용해도 된다!
-	
-
-
-
-
-
-	// friend
-	// 다른 클래스가 이 클래스의 private 멤버에 접근할 수 있도록 허용
+	ZVector3 operator+(const ZVector3& other) const;
+	ZVector3 operator-(const ZVector3& other) const;
+	void operator=(const ZVector3& rhs);
+	ZVector3 operator*(const ZVector3& rhs) const; // 성분별 곱셈 ( Hadamard Product )
+	ZVector3 operator*(double k) const;
 
 	friend std::ostream& operator<<(std::ostream& os, const ZVector3& vec) {
 		os << "ZVector3(" << vec.x << ", " << vec.y << ", " << vec.z << ")";
 		return os;
 	}
-
 	
-
 };
