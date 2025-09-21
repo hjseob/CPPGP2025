@@ -1,17 +1,24 @@
-// CPPGP2025.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
 #include <windows.h>
 #include <iostream>
+#include "GameState.h"
 #include "ZVector3.h"
 #include "ZMatrix.h"
+#include "CPPGP2025.h"
 
-void matrixTest();
+
+GameState* g_currentState = nullptr;
+HWND g_hWnd;
+
+
+void MatrixTest();
+void ChangeState(GameState* newState);
+
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
 	{
-		case WM_DESTROY: // 창이 닫힐 때 발생
+		case WM_DESTROY:		// 창이 닫힐 때 발생
 			PostQuitMessage(0); // 메시지 루프를 종료하도록 요청
 			break;
 		default:
@@ -31,7 +38,7 @@ void SetupConsole()
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	SetupConsole();
-	matrixTest();
+	MatrixTest();
 
 	// 윈도우 클래스 정의
 	WNDCLASS wc = {};
@@ -80,7 +87,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	return (int)msg.wParam;
 }
 
-void matrixTest()
+void MatrixTest()
 {
 
 	ZVector3 v1(1, 2, 3);
@@ -129,3 +136,15 @@ void matrixTest()
 	std::cout << finalWorldPointByMatrix << std::endl;
 }
 
+
+void ChangeState(GameState* newState)
+{
+	if (g_currentState)
+	{
+		g_currentState->Exit();
+		delete g_currentState;
+	}
+	g_currentState = newState;
+
+	g_currentState->Enter(g_hWnd);
+}
