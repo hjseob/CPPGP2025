@@ -2,7 +2,7 @@
 #include "ZMatrix.h"
 #include <cmath> // sqrt, sin, cos
 
-// Á¤Àû ¸â¹ö ÇÔ¼ö·Î ³»Àû, ¿ÜÀû
+// ì •ì  ë©¤ë²„ í•¨ìˆ˜ë¡œ ë‚´ì , ì™¸ì 
 
 #pragma region Static Functions
 
@@ -66,7 +66,7 @@ double ZVector3::radBetween(const ZVector3& a, const ZVector3& b) const
 
 	double cosTheta = dotProduct / (magA * magB);
 
-	// floating point ¿ÀÂ÷ º¸Á¤ ( [-1, 1] ¹üÀ§ ¹Û ¹æÁö )
+	// floating point ì˜¤ì°¨ ë³´ì • ( [-1, 1] ë²”ìœ„ ë°– ë°©ì§€ )
 	if (cosTheta > 1.0) cosTheta = 1.0;
 	if (cosTheta < -1.0) cosTheta = -1.0;
 
@@ -93,9 +93,9 @@ ZVector3 ZVector3::Cross(const ZVector3& rhs) const
 
 ZVector3 ZVector3::Transform(const ZMatrix& matrix) const
 {
-	// D3D ±âÁØ!
-	// Çà º¤ÅÍ ( º¤ÅÍ¸¦ ¿ÞÂÊ¿¡ µÎ°í °öÇÑ´Ù )
-	// (º¤ÅÍ * Çà·Ä ) ÀÌ¹Ç·Î µ¿Â÷ÁÂÇ¥ w=1·Î °è»ê
+	// D3D ê¸°ì¤€!
+	// í–‰ ë²¡í„° ( ë²¡í„°ë¥¼ ì™¼ìª½ì— ë‘ê³  ê³±í•œë‹¤ )
+	// (ë²¡í„° * í–‰ë ¬ ) ì´ë¯€ë¡œ ë™ì°¨ì¢Œí‘œ w=1ë¡œ ê³„ì‚°
 
 	float newX = x * matrix.m[0][0] + y * matrix.m[1][0] + z * matrix.m[2][0] + 1.0 * matrix.m[3][0];
 	float newY = x * matrix.m[0][1] + y * matrix.m[1][1] + z * matrix.m[2][1] + 1.0 * matrix.m[3][1];

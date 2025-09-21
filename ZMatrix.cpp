@@ -2,10 +2,10 @@
 #include <cmath> // sin, cos
 
 
-ZMatrix::ZMatrix() // ´ÜÀ§ Çà·Ä·Î ÃÊ±âÈ­
+ZMatrix::ZMatrix() // ë‹¨ìœ„ í–‰ë ¬ë¡œ ì´ˆê¸°í™”
 {
-	// ÀÌÅÍ·¹ÀÌÅÍÀÇ °æ¿ì´Â ++i·Î ±ÇÀå
-	// i++ÀÇ °æ¿ì´Â  ÀÓ½Ã? °ªÀÌ »ý±ä´Ù
+	// ì´í„°ë ˆì´í„°ì˜ ê²½ìš°ëŠ” ++ië¡œ ê¶Œìž¥
+	// i++ì˜ ê²½ìš°ëŠ”  ìž„ì‹œ? ê°’ì´ ìƒê¸´ë‹¤
 	for (int i = 0; i < 4; ++i) {
 		for (int j = 0; j < 4; ++j) {
 			m[i][j] = (i == j) ? 1.0 : 0.0;
