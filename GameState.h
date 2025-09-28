@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 class GameState
 {
@@ -7,7 +7,7 @@ public:
 	virtual void Enter(HWND hWnd) = 0; // 순수 가상 함수  추상클래스
 	virtual void Exit() = 0;
 	virtual void Update(float elapsedTime) = 0;
-	virtual void Draw(HDC hdc) = 0;
+	virtual void Render(HDC hdc) = 0;
 	virtual void OnKeyDown(WPARAM wParam) = 0;
 	virtual void OnKeyUp(WPARAM wParam) = 0;
 	virtual void OnMouseDown(int x, int y, int button) = 0;
