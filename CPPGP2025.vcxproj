@@ -123,27 +123,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChiliException.cpp" />
+    <ClCompile Include="dxerr.cpp" />
+    <ClCompile Include="DxgiInfoManager.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="TitleState.cpp" />
     <ClCompile Include="ZApplication.cpp" />
     <ClCompile Include="ZGraphics.cpp" />
+    <ClCompile Include="ZGraphicsResource.cpp" />
     <ClCompile Include="ZMatrix.cpp" />
     <ClCompile Include="ZVector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BmpImage.h" />
+    <ClInclude Include="ChiliException.h" />
+    <ClInclude Include="ChiliWin.h" />
+    <ClInclude Include="ChiliWRL.h" />
     <ClInclude Include="CPPGP2025.h" />
+    <ClInclude Include="dxerr.h" />
+    <ClInclude Include="DxgiInfoManager.h" />
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GraphicsThrowMacros.h" />
     <ClInclude Include="TitleState.h" />
+    <ClInclude Include="WindowsThrowMacros.h" />
     <ClInclude Include="ZApplication.h" />
     <ClInclude Include="ZD3D11.h" />
-    <ClInclude Include="ZFrameworkGlobal.h" />
     <ClInclude Include="ZGraphics.h" />
-    <ClInclude Include="ZGraphicsGlobal.h" />
+    <ClInclude Include="ZGraphicsResource.h" />
     <ClInclude Include="ZMatrix.h" />
     <ClInclude Include="ZVector3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXGetErrorDescription.inl" />
+    <None Include="DXGetErrorString.inl" />
+    <None Include="DXTrace.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
